@@ -3,12 +3,15 @@ autoload -U colors
 colors
 autoload -U compinit
 compinit
+# auto directory pushd that you can get dirs list by cd -[tab]
 setopt auto_pushd
+# does not pushd the same directory.
+setopt pushd_ignore_dups
+# auto change directory
 setopt auto_cd
-setopt correct
 setopt cdable_vars
-setopt PUSHD_IGNORE_DUPS
-setopt AUTO_PUSHD
+# command correct edition before each completion attempt
+setopt correct
  
 # zstyle
 zstyle ':completion:*' menu select true
@@ -42,8 +45,24 @@ export MYSQL_PS1="$m_color0(\d)$m_color1> $m_clear"
 # colorstyle (ls)
 LS_COLORS="di=34;49:ln=35;49"
 
+# Command history configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+# ignore duplication command history list
+setopt hist_ignore_dups
+# share command history data
+#setopt share_history
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
 # alias
-alias ls="ls -F --color=auto"
+#alias ls="ls -F --color=auto"
+alias ls="ls -F"
 alias sl="ls"
 alias ll="ls -l"
 alias la="ls -A"
