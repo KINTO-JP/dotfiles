@@ -116,7 +116,6 @@ nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
 " nnoremap <Space> <PageDown>
 " nnoremap <S-Space> <Pageup> 
 
-" バッファの最終行へ
 map g<Space> G
 
 " 空白挿入
