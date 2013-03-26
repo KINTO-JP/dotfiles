@@ -139,6 +139,21 @@ set autoindent
 set smartindent
 
 "-------------------------------------------------
+"special Key
+"-------------------------------------------------
+" タブ文字を CTRL-I で表示し、行末に $ で表示する。（有効:list/無効:nolist）
+set list
+
+" Listモード (訳注: オプション 'list' がオンのとき) に使われる文字を設定する。
+set listchars=tab:>-,trail:-,extends:<,precedes:<
+highlight specialKey ctermfg=darkgray
+
+" 全角スペースの表示
+highlight ZenkakuSpace cterm=reverse ctermfg=darkgray gui=reverse guifg=darkgray
+" highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
+
+"-------------------------------------------------
 " キーマッピング
 "-------------------------------------------------
 " 最終行へ移動
@@ -162,8 +177,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " カーソルを表示行で移動する。物理行移動は<C-n>, <C-p>
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " 列の先頭と後尾へ移動
 nnoremap 0 ^
