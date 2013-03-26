@@ -197,6 +197,9 @@ nnoremap <C-l> <C-w>l
 nnoremap 0 ^
 nnoremap 9 $
 
+" 強制全保存終了を無効化
+nnoremap ZZ <Nop>
+
 " スペースキーで画面移動
 " nnoremap <Space> <PageDown>
 " nnoremap <S-Space> <Pageup>
@@ -204,8 +207,11 @@ nnoremap 9 $
 " 空白挿入
 nnoremap <M-Space> i<Space><Esc><Right>
 
-" 強制全保存終了を無効化
-nnoremap ZZ <Nop>
+" .vimrcを即座に開く
+nnoremap <Space>. :e $MYVIMRC<CR>
+
+" vimrcの設定を反映してリロード
+nnoremap <Space>.. :<C-u>source $MYVIMRC<CR>
 
 " ----挿入モード時----
 " 挿入モードからの脱出
