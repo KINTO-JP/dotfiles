@@ -228,20 +228,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" カーソルを表示行で移動する。物理行移動は<C-n>, <C-p>
-" nnoremap j gj
-" nnoremap k gk
-
 " 列の先頭と後尾へ移動
 nnoremap 0 ^
 nnoremap 9 $
 
 " 強制全保存終了を無効化
 nnoremap ZZ <Nop>
-
-" スペースキーで画面移動
-" nnoremap <Space> <PageDown>
-" nnoremap <S-Space> <Pageup>
 
 " 空白挿入
 nnoremap <M-Space> i<Space><Esc><Right>
@@ -273,7 +265,4 @@ vnoremap > >gv
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" スペースキーで画面移動
-" vnoremap <Space> <C-d>
-" vnoremap <S-Space> <C-u>
 
