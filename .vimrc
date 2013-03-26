@@ -11,11 +11,11 @@ set encoding=utf-8
 set hidden
 
 " twigをハイライトする
-au BufRead,BufNewFile *.twig set filetype=htmldjango 
- 
+au BufRead,BufNewFile *.twig set filetype=htmldjango
+
 " 文字列中のHTMLをハイライトする
 let php_htmlInStrings=1
- 
+
 " 文字列中のSQLをハイライトする
 let php_sql_query=1
 
@@ -31,21 +31,30 @@ set ttyfast
 " ビープ音を消す
 set vb t_vb=
 
+" ファイルを開いた時に最後のカーソル位置を再現する
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+
+" 保存時にtabをスペースに変換する
+autocmd BufWritePre * :%s/\t/  /ge
+
 "-------------------------------------------------
 " Vim UI
 "-------------------------------------------------
 " カラーの有効化
 syntax on
- 
+
 " [行,列]表示
 set ruler
- 
+
 " タイトルをウィンドウに表示
 set title
- 
+
 " ステータスラインを常に表示
 set laststatus=2
- 
+
 " ステータスライン表示方法
 set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=%l,%c%V%8P
 
@@ -54,16 +63,16 @@ set number
 
 " カーソル表示(行)
 set cursorline
- 
+
 " カーソル表示(列)
 set cursorcolumn
 
 " 括弧入力時の対応する括弧を表示
 set showmatch
- 
+
 " 対応する括弧の表示時間を2にする
 set matchtime=2
- 
+
 " 検索結果文字列のハイライトを有効にする
 set hlsearch
 
@@ -72,7 +81,7 @@ set pastetoggle=<F11>
 
 " コマンド補完を強化
 set wildmenu
- 
+
 " 入力中のコマンド表示
 set showcmd
 
@@ -91,16 +100,13 @@ set t_Co=256
 
 " カラースキーマ
 colorscheme desert
- 
+
 " コマンド実行中は再描画しない
 set lazyredraw
 
 " マウス機能をフルに使用
 set mouse=a
 set ttymouse=xterm2
-
-" ファイルを開いた時に最後のカーソル位置を再現する
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " 挿入モードとノーマルモードでステータスラインの色変更
 " ノーマルモードは青色
@@ -122,16 +128,17 @@ set splitbelow
 "-------------------------------------------------
 " Helpの言語設定
 set helplang=ja
+" set helplang=en
 
 "-------------------------------------------------
 " インデント設定
 "-------------------------------------------------
 " タブを画面で表示する際の幅
 set tabstop=4
- 
+
 " インデント時に使用されるスペースの数
 set shiftwidth=4
- 
+
 " 前の行に基づいて新しい行をインデント
 set autoindent
 
@@ -167,6 +174,12 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 noremap ; :
 noremap : ;
 
+" Ctrl-iでHelpの参照
+nnoremap <C-i>  :<C-u>help<Space>
+
+" カーソルしたのキーワードでHelpの参照
+nnoremap <C-i><C-i> :<C-u>help<Space><C-r><C-w><CR>
+
 " タブの切り替え
 nnoremap bg gT
 
@@ -186,13 +199,10 @@ nnoremap 9 $
 
 " スペースキーで画面移動
 " nnoremap <Space> <PageDown>
-" nnoremap <S-Space> <Pageup> 
+" nnoremap <S-Space> <Pageup>
 
 " 空白挿入
 nnoremap <M-Space> i<Space><Esc><Right>
-
-" helpの参照
-" nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
 
 " 強制全保存終了を無効化
 nnoremap ZZ <Nop>
