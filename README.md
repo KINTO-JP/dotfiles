@@ -1,4 +1,5 @@
 dotfiles
 ========
 
-vimrc等々…
+vimrcの設定
+

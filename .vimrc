@@ -7,9 +7,6 @@ set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 " vimで編集するときの文字コード設定
 set encoding=utf-8
 
-" 変更中のバッファを保存せずに、他のバッファに切り替え
-set hidden
-
 " twigをハイライトする
 au BufRead,BufNewFile *.twig set filetype=htmldjango
 
@@ -131,6 +128,40 @@ set helplang=ja
 " set helplang=en
 
 "-------------------------------------------------
+" Backup設定
+"-------------------------------------------------
+" バッファを自動的に保存する
+set autowrite
+
+" 変更中のバッファを保存せずに、他のバッファに切り替え
+set hidden
+
+" Backupを取る
+set backup
+
+" Backupファイルの作成場所を指定
+set backupdir=$HOME/.vimtmp
+
+" スワップファイルを作成
+set swapfile
+
+" スワップファイルの作成場所を指定
+set directory=$HOME/.vimtmp
+
+" コロンコマンドを記録する数
+set history=10000
+
+" スワップファイルの自動保存時間設定
+" この時間の間 (ミリ秒単位) 入力がなければ、スワップファイルがディスクに書き込まれる
+set updatetime=500
+
+" viminfoファイルの設定
+"set viminfo=""
+
+" 変数のスコープ
+let g:svbfre = '.\+'
+
+"-------------------------------------------------
 " インデント設定
 "-------------------------------------------------
 " タブを画面で表示する際の幅
@@ -146,7 +177,7 @@ set autoindent
 set smartindent
 
 "-------------------------------------------------
-"special Key
+" Special Key
 "-------------------------------------------------
 " タブ文字を CTRL-I で表示し、行末に $ で表示する。（有効:list/無効:nolist）
 set list
