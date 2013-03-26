@@ -28,6 +28,9 @@ set guioptions+=a
 " 高速ターミナル接続を行う
 set ttyfast
 
+" ビープ音を消す
+set vb t_vb=
+
 "-------------------------------------------------
 " Vim UI
 "-------------------------------------------------
@@ -138,6 +141,9 @@ set smartindent
 "-------------------------------------------------
 " キーマッピング
 "-------------------------------------------------
+" 最終行へ移動
+map g<Space> G
+
 " ----ノーマルモード時----
 " esc連打で検索ハイライトを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
@@ -166,9 +172,6 @@ nnoremap 9 $
 " スペースキーで画面移動
 " nnoremap <Space> <PageDown>
 " nnoremap <S-Space> <Pageup> 
-
-" 最終行へ移動
-map g<Space> G
 
 " 空白挿入
 nnoremap <M-Space> i<Space><Esc><Right>
