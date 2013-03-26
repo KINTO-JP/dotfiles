@@ -170,6 +170,14 @@ map g<Space> G
 " esc連打で検索ハイライトを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" 検索時に結果が中央に来るようにする
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
 " shiftキーを押さずに;を:へ出来るように設定
 noremap ; :
 noremap : ;
@@ -218,6 +226,13 @@ nnoremap <Space>.. :<C-u>source $MYVIMRC<CR>
 inoremap <C-c> <Esc>
 inoremap jj <Esc>
 inoremap kk <Esc>
+
+" 挿入モードの移動
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-d> <Del>
 
 " ----ヴィジュアルモード時----
 " >と<の連打でのインデントを変化
