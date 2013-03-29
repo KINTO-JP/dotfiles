@@ -1,4 +1,43 @@
 "-------------------------------------------------
+" NeoBundle設定
+"-------------------------------------------------
+" Be iMproved
+set nocompatible
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" vim-scripts repos
+NeoBundle 'L9'
+NeoBundle 'FuzzyFinder'
+
+" FuzzyFinder.vim
+nnoremap <Space>f f
+nnoremap <Space>F F
+nnoremap f <Nop>
+nnoremap <silent> fb :FufBuffer!<CR>
+nnoremap <silent> ff :FufFile!<CR>
+" すごく便利らしいが、使うと固まるのでひとまずコメントアウト
+" nnoremap <silent> fg :FufFile **/<CR>
+nnoremap <silent> fl :FufLine<CR>
+nnoremap <silent> fm :FufMruFile!<CR>
+nnoremap <silent> fc :FufRenewCache<CR>
+nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
+nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile!<C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
+nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FufMruFile!<CR>
+
+autocmd FileType fuf nmap <C-c> <ESC>
+let g:fuf_patternSeparator = ' '
+let g:fuf_modesDisable = ['mrucmd']
+let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
+let g:fuf_mrufile_maxItem = 100
+let g:fuf_enumeratingLimit = 20
+let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
+
+"-------------------------------------------------
 " 基本設定
 "-------------------------------------------------
 " ファイルを開く際の文字コード設定
@@ -222,6 +261,16 @@ nnoremap <C-i><C-i> :<C-u>help<Space><C-r><C-w><CR>
 " タブの切り替え
 nnoremap bg gT
 
+" タブの操作
+nnoremap <Space>t t
+nnoremap <Space>T T
+nnoremap t <Nop>
+nnoremap <silent> tc :<C-u>tabnew<CR>:tabmove<CR>
+nnoremap <silent> tk :<C-u>tabclose<CR>
+nnoremap <silent> tn :<C-u>tabnext<CR>
+nnoremap <silent> tp :<C-u>tabprevious<CR>
+
+
 " splitの移をctrl押しながらhjklへ
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -264,5 +313,4 @@ vnoremap > >gv
 " tabの連打でのインデントを変化
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
 
