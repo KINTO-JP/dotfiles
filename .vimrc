@@ -10,11 +10,19 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-" vim-scripts repos
-NeoBundle 'L9'
-NeoBundle 'FuzzyFinder'
+" syntastic
+" https://github.com/scrooloose/syntastic
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+" syntastic用にキーマップ設定
+nnoremap ,sc :<C-u>SyntasticCheck<CR>
+nnoremap ,e :<C-u>Errors<CR>
 
 " FuzzyFinder.vim
+NeoBundle 'L9'
+NeoBundle 'FuzzyFinder'
+" FuzzyFinder.vim用にキーマップ設定
 nnoremap <Space>f f
 nnoremap <Space>F F
 nnoremap f <Nop>
@@ -33,7 +41,7 @@ autocmd FileType fuf nmap <C-c> <ESC>
 let g:fuf_patternSeparator = ' '
 let g:fuf_modesDisable = ['mrucmd']
 let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
-let g:fuf_mrufile_maxItem = 100
+let g:fuf_mrufile_maxItem = 1000
 let g:fuf_enumeratingLimit = 20
 let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
 
