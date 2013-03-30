@@ -10,6 +10,42 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+" Node-Tree
+" 参考 http://blog.livedoor.jp/kumonopanya/archives/51048805.html
+NeoBundle 'scrooloose/nerdtree'
+" Node-Tree用にキーマップ設定
+nnoremap <silent> <C-e>      :NERDTreeToggle<CR>
+" 引数なしでvimを開いたらNERDTreeを起動、引数ありならNERDTreeは起動しない、引数で渡されたファイルを開く
+autocmd vimenter * if !argc() | NERDTree | endif
+" 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる
+autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
+" nerdchristmastree カラー表示の設定 values: 0 or 1.
+" let g:NERDChristmasTree=1
+" ファイルオープン後の動作 Values: 0 or 1.
+" let g:NERDTreeQuitOnOpen=0
+" NERDTreeIgnore 無視するファイルを設定
+let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
+" NERDTreeShowHidden 隠しファイルを表示 Values: 0 or 1.
+let g:NERDTreeShowHidden=1
+" ファイルの表示、非表示
+" let g:NERDTreeShowFiles=1
+" カーソルラインをハイライト表示 Values: 0 or 1.
+" let g:NERDTreeHighlightCursorline=1
+" ブックマークリストの表示 Values: 0 or 1.
+" let g:NERDTreeShowBookmarks=0
+" NERDTreeのツリーを開く場所 Values: "left" or "right"
+" let g:NERDTreeWinPos="left"
+" NERDTreeのツリーの幅
+" let g:NERDTreeWinSize=31
+" ブックマークや、ヘルプのショートカットをメニューに表示 Values: 0 or 1.
+let g:NERDTreeMinimalUI=1
+" NERDTreeを+|`などを使ってツリー表示 Values: 0 or 1.
+let g:NERDTreeDirArrows=0
+" マウス操作方法 Values: 1, 2 or 3.
+let g:NERDTreeMouseMode=1
+" NERDTreeShowLineNumbers 行番号を表示 Values: 0 or 1.
+" let NERDTreeShowLineNumbers=0
+
 " syntastic
 " https://github.com/scrooloose/syntastic
 NeoBundle 'scrooloose/syntastic'
@@ -277,7 +313,6 @@ nnoremap <silent> tc :<C-u>tabnew<CR>:tabmove<CR>
 nnoremap <silent> tk :<C-u>tabclose<CR>
 nnoremap <silent> tn :<C-u>tabnext<CR>
 nnoremap <silent> tp :<C-u>tabprevious<CR>
-
 
 " splitの移をctrl押しながらhjklへ
 nnoremap <C-h> <C-w>h
