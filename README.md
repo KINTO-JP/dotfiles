@@ -4,24 +4,24 @@ Installtion
 ```
 $ git clone git@github.com:utiwa/dotfiles.git
 ```
-git commit した時のコミットのエラー回避方法
+##git commit した時のコミットのエラー回避方法
 ```
 ex:
 error: There was a problem with the editor 'vi'.
 Please supply the message using either -m or -F option.
 ```
-明示的に使用するエディタをgitに設定
+###使用するエディタをgitに設定
 ```
 $ git config --global core.editor "/usr/bin/vim"
 ```
 
 zshの導入
 ---
-あとで書く
+#あとで書く
 
 tmuxの導入
 ---
-あとで書く
+#あとで書く
 
 vimの設定
 ---
@@ -34,4 +34,10 @@ NeoBundleのSetup
 $ mkdir -p ~/.vim/bundle
 $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
+プラグインのインストール
+    :NeoBundleInstall
+プラグインのアップデート
+    :NeoBundleInstall!
+プラグインのアンインストール
+    :NeoBundleClean
 
