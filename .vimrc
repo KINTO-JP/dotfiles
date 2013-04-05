@@ -1,4 +1,4 @@
-"-------------------------------------------------
+" インデントの設定"-------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------
 " Be iMproved
@@ -10,6 +10,44 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+" Node-Commenter
+" http://nishikawasasaki.hatenablog.com/entry/20101226/1293374432
+" ToDo:使い方を知る
+NeoBundle 'The-NERD-Commenter'
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+
+" Zen-Coding
+" ToDo:使い方を覚える
+NeoBundle 'mattn/zencoding-vim'
+" インデントの設定
+let g:user_zen_settings = { 'indentation' : '    ', }
+
+" neocomplcache
+" ToDo:プラグインの設定をする
+" (前編)http://vim-users.jp/2010/10/hack177/
+" (中編)http://vim-users.jp/2010/11/hack185/
+" (後編)http://vim-users.jp/2011/01/hack193/
+NeoBundle 'Shougo/neocomplcache'
+let g:NeoComplCache_EnableAtStartup = 1
+" call neobundle#config('neocomplcache', {
+" \ 'lazy' : 1,
+" \ 'autoload' : {
+" \   'insert' : 1,
+" \ }})
+
+" syntastic
+" https://github.com/scrooloose/syntastic
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+" syntastic用にキーマップ設定
+nnoremap ,sc :<C-u>SyntasticCheck<CR>
+nnoremap ,e :<C-u>Errors<CR>
+
+"" ----ファイラ系----
+" ToDo:あとでunite.vimと比較する
+"
 " Node-Tree
 " 参考 http://blog.livedoor.jp/kumonopanya/archives/51048805.html
 NeoBundle 'scrooloose/nerdtree'
@@ -46,16 +84,8 @@ let g:NERDTreeMouseMode=1
 " NERDTreeShowLineNumbers 行番号を表示 Values: 0 or 1.
 " let NERDTreeShowLineNumbers=0
 
-" syntastic
-" https://github.com/scrooloose/syntastic
-NeoBundle 'scrooloose/syntastic'
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-" syntastic用にキーマップ設定
-nnoremap ,sc :<C-u>SyntasticCheck<CR>
-nnoremap ,e :<C-u>Errors<CR>
-
-" FuzzyFinder.vim
+" FuzzyFinder
+" 参考 http://d.hatena.ne.jp/mickey24/20090310/1236633777
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 " FuzzyFinder.vim用にキーマップ設定
@@ -194,6 +224,17 @@ set ttymouse=xterm2
 au InsertEnter * hi StatusLine guifg=White guibg=DarkRed gui=none ctermfg=White ctermbg=Red cterm=none
 au InsertLeave * hi StatusLine guifg=While guibg=Blue gui=none ctermfg=White ctermbg=Blue cterm=none
 
+" ポップアップの色の設定
+" (色一覧)http://h2plus.biz/hiromitsu/entry/674
+" ノーマルアイテム
+highlight Pmenu ctermbg=4
+" 選択しているアイテム
+highlight PmenuSel ctermbg=1
+" スクロールバー
+highlight PMenuSbar ctermbg=4
+" スクロールバーのレバー
+highlight PmenuThumb ctermfg=1
+
 "-------------------------------------------------
 " Window設定
 "-------------------------------------------------
@@ -280,7 +321,7 @@ match ZenkakuSpace /　/
 " 最終行へ移動
 map g<Space> G
 
-" ----ノーマルモード時----
+"" ----ノーマルモード時----
 " esc連打で検索ハイライトを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
@@ -336,7 +377,7 @@ nnoremap <Space>. :e $MYVIMRC<CR>
 " vimrcの設定を反映してリロード
 nnoremap <Space>.. :<C-u>source $MYVIMRC<CR>
 
-" ----挿入モード時----
+"" ----挿入モード時----
 " 挿入モードからの脱出
 inoremap <C-c> <Esc>
 inoremap jj <Esc>
@@ -349,7 +390,7 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-d> <Del>
 
-" ----ヴィジュアルモード時----
+"" ----ヴィジュアルモード時----
 " >と<の連打でのインデントを変化
 vnoremap < <gv
 vnoremap > >gv
