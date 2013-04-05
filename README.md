@@ -35,9 +35,9 @@ $ mkdir -p ~/.vim/bundle
 $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
 プラグインのインストール
-    :NeoBundleInstall
+  :NeoBundleInstall
 プラグインのアップデート
-    :NeoBundleInstall!
+  :NeoBundleInstall!
 プラグインのアンインストール
-    :NeoBundleClean
+  :NeoBundleClean
 
