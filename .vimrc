@@ -197,23 +197,21 @@ set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}
 " バッファ内のファイルのタイプ
 set statusline+=%y
 " 空白スペース
-set statusline+=\
+" \ で1個、\ \ で2個になる
 
 if winwidth(0) >= 130
   " バッファ内のファイルのフルパス
-  set statusline+=%F
+  set statusline+=\ %F
 else
   " ファイル名のみ
-  set statusline+=%t
+  set statusline+=\ %t
 endif
 " 左寄せ項目と右寄せ項目の区切り
 set statusline+=%=
 " Gitのブランチ名を表示
 set statusline+=%{fugitive#statusline()}
-" 空白スペース2個
-set statusline+=\ \
 " 何行目にカーソルがあるか
-set statusline+=%1l
+set statusline+=\ \ %1l
 set statusline+=/
 " バッファ内の総行数
 set statusline+=%L
@@ -222,10 +220,8 @@ set statusline+=,
 set statusline+=%c
 " 画面上の何列目にカーソルがあるか
 set statusline+=%V
-" 空白スペース2個
-set statusline+=\ \
 " ファイル内の何％の位置にあるか
-set statusline+=%P
+set statusline+=\ \ %P
 
 " 行番号表示
 set number
