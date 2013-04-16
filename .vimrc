@@ -10,6 +10,19 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+" 結局使わなかった…
+" Powerline
+" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+" set guifont=Ricty\ Bold\ for\ Powerline
+" let g:Powerline_symbols = 'fancy'
+" NeoBundle 'taichouchou2/alpaca_powertabline'
+
+" fugitive
+" Vimのステータスラインにgitのbranchを表示する際に使用中
+" ToDo:コマンドを知る
+" http://yuku-tech.hatenablog.com/entry/20110427/1303868482
+NeoBundle 'tpope/vim-fugitive'
+
 " Node-Commenter
 " http://nishikawasasaki.hatenablog.com/entry/20101226/1293374432
 " ToDo:使い方を知る
@@ -166,7 +179,53 @@ set title
 set laststatus=2
 
 " ステータスライン表示方法
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=%l,%c%V%8P
+" 参考: http://blog.ruedap.com/entry/20110712/vim_statusline_git_branch_name
+" 行が長すぎるときに切り詰める位置
+set statusline=%<
+" バッファ番号
+set statusline+=[%n]
+" %m 修正フラグ
+set statusline+=%m
+" %r 読み込み専用フラグ
+set statusline+=%r
+" %h ヘルプバッファフラグ
+set statusline+=%h
+" %w プレビューウィンドウフラグ
+set statusline+=%w
+" fencとffを表示
+set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}
+" バッファ内のファイルのタイプ
+set statusline+=%y
+" 空白スペース
+set statusline+=\
+
+if winwidth(0) >= 130
+  " バッファ内のファイルのフルパス
+  set statusline+=%F
+else
+  " ファイル名のみ
+  set statusline+=%t
+endif
+" 左寄せ項目と右寄せ項目の区切り
+set statusline+=%=
+" Gitのブランチ名を表示
+set statusline+=%{fugitive#statusline()}
+" 空白スペース2個
+set statusline+=\ \
+" 何行目にカーソルがあるか
+set statusline+=%1l
+set statusline+=/
+" バッファ内の総行数
+set statusline+=%L
+" 何列目にカーソルがあるか
+set statusline+=,
+set statusline+=%c
+" 画面上の何列目にカーソルがあるか
+set statusline+=%V
+" 空白スペース2個
+set statusline+=\ \
+" ファイル内の何％の位置にあるか
+set statusline+=%P
 
 " 行番号表示
 set number
@@ -288,8 +347,15 @@ let g:svbfre = '.\+'
 "-------------------------------------------------
 " インデント設定
 "-------------------------------------------------
+" 挿入モードでTabを挿入するとき、代わりに適切な数の空白を使う
+" （有効:expandtab/無効:noexpandtab）
+set noexpandtab
+
 " タブを画面で表示する際の幅
 set tabstop=4
+
+" Tabの挿入やBSの使用等の編集操作をするときに、Tabが対応する空白の数
+set softtabstop=4
 
 " インデント時に使用されるスペースの数
 set shiftwidth=4
