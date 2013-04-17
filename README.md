@@ -21,7 +21,17 @@ zshの導入
 
 tmuxの導入
 ---
-#あとで書く
+scriptisディレクトリの中にある**loadaverage, pc-running-time, used-mem**を**/usr/local/bin**などPATHの遠ている場所に置く
+
+PATHの設定の確認方法
+```
+echo $PATH
+```
+PCに搭載しているメモリの量にused-memの以下の所を書き換える
+```
+ # 搭載メモリ(理論値): **4**GBの場合
+echo "TOTAL_MEM: $((**4** * 1024)) MB (Theoretical value)"
+```
 
 vimの設定
 ---
@@ -34,10 +44,18 @@ NeoBundleのSetup
 $ mkdir -p ~/.vim/bundle
 $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
+
+###プラグインの導入方法
 プラグインのインストール
-  :NeoBundleInstall
+
+**:NeoBundleInstall**
+
 プラグインのアップデート
-  :NeoBundleInstall!
+
+**:NeoBundleInstall!**
+
 プラグインのアンインストール
-  :NeoBundleClean
+
+**:NeoBundleClean**
+
 
