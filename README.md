@@ -1,6 +1,10 @@
 Installtion
 ========
 
+前提条件
+gitインストール済
+homebrewインストール済
+
 ```
 $ git clone git@github.com:utiwa/dotfiles.git
 ```
@@ -15,22 +19,29 @@ Please supply the message using either -m or -F option.
 $ git config --global core.editor "/usr/bin/vim"
 ```
 
-zshの導入
+zshの設定
 ---
-#あとで書く
+ここ読めばわかる！
+http://news.mynavi.jp/column/zsh/index.html
 
-tmuxの導入
+tmuxの設定
 ---
-scriptisディレクトリの中にある**loadaverage, pc-running-time, used-mem**を**/usr/local/bin**などPATHの遠ている場所に置く
+scriptisディレクトリの中にある__loadaverage, pc-running-time, used-mem__を__/usr/local/bin__などPATHの遠ている場所に置く
 
-PATHの設定の確認方法
+###PATHの設定の確認方法
 ```
 echo $PATH
 ```
-PCに搭載しているメモリの量にused-memの以下の所を書き換える
+
+###PCに搭載しているメモリの量にused-memの以下の4の数字のところを書き換える
 ```
- # 搭載メモリ(理論値): **4**GBの場合
-echo "TOTAL_MEM: $((**4** * 1024)) MB (Theoretical value)"
+ # 搭載メモリ(理論値): 4GBの場合
+echo "TOTAL_MEM: $((4 * 1024)) MB (Theoretical value)"
+```
+
+###スクリプトに実行権限を与える
+```
+chmod u+x used-mem pc-running-time loadaverage
 ```
 
 vimの設定
