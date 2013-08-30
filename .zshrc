@@ -161,8 +161,6 @@ alias rm="rm -i"
 alias grep="grep --color"
 alias pd="popd"
 
-alias less="/usr/share/vim/vim72/macros/less.sh"
-
 ## mysql prompt
 #
 m_color0=$'\e[1;36m'
@@ -226,3 +224,10 @@ esac
 ## load user .zshrc configuration file
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# npm
+export PATH="/usr/local/share/npm/bin:$PATH"
