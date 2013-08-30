@@ -58,6 +58,10 @@ let g:syntastic_auto_loc_list=2
 nnoremap ,sc :<C-u>SyntasticCheck<CR>
 nnoremap ,e :<C-u>Errors<CR>
 
+" jade-syntastic
+" https://github.com/digitaltoad/vim-jade
+NeoBundle 'digitaltoad/vim-jade'
+
 "" ----ファイラ系----
 " ToDo:あとでunite.vimと比較する
 "
@@ -198,7 +202,6 @@ set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}
 set statusline+=%y
 " 空白スペース
 " \ で1個、\ \ で2個になる
-
 if winwidth(0) >= 130
   " バッファ内のファイルのフルパス
   set statusline+=\ %F
@@ -345,7 +348,7 @@ let g:svbfre = '.\+'
 "-------------------------------------------------
 " 挿入モードでTabを挿入するとき、代わりに適切な数の空白を使う
 " （有効:expandtab/無効:noexpandtab）
-set noexpandtab
+set expandtab
 
 " タブを画面で表示する際の幅
 set tabstop=4
@@ -354,7 +357,7 @@ set tabstop=4
 set softtabstop=4
 
 " インデント時に使用されるスペースの数
-set shiftwidth=4
+set shiftwidth=2
 
 " 前の行に基づいて新しい行をインデント
 set autoindent
