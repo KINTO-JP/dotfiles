@@ -226,8 +226,6 @@ esac
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
 
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+### Added by the npm & python2&3 & Heroku Toolbelt
+export PATH="/usr/local/share/npm/bin:/usr/local/share/python:/usr/local/share/python3:/usr/local/heroku/bin:$PATH"
 
-# npm
-export PATH="/usr/local/share/npm/bin:$PATH"
