@@ -30,11 +30,12 @@ NeoBundle 'The-NERD-Commenter'
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 
-" Zen-Coding
+" Emmet/Zen-Coding
 " ToDo:使い方を覚える
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'mattn/zencoding-vim'
 " インデントの設定
-let g:user_zen_settings = { 'indentation' : '    ', }
+"let g:user_zen_settings = { 'indentation' : '    ', }
 
 " neocomplcache
 " ToDo:プラグインの設定をする
