@@ -66,6 +66,7 @@ $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 プラグインのアップデート
 
 **:NeoBundleInstall!**
+
 **:NeoBundleUpdate**
 
 プラグインのアンインストール
