@@ -3,10 +3,13 @@ Installtion
 
 前提条件
 gitインストール済
+※mac版
 homebrewインストール済
 
 ```
 $ git clone git@github.com:utiwa/dotfiles.git
+$ cd dotfiles
+$ sh setup.sh
 ```
 ##git commit した時のコミットのエラー回避方法
 ```

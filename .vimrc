@@ -10,13 +10,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-" 結局使わなかった…
-" Powerline
-" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-" set guifont=Ricty\ Bold\ for\ Powerline
-" let g:Powerline_symbols = 'fancy'
-" NeoBundle 'taichouchou2/alpaca_powertabline'
-
 " fugitive
 " Vimのステータスラインにgitのbranchを表示する際に使用中
 " ToDo:コマンドを知る
@@ -50,7 +43,24 @@ let g:NeoComplCache_EnableAtStartup = 1
 " \   'insert' : 1,
 " \ }})
 
+"" ----blog octopress----
+" vim-octopress
+NeoBundle 'tangledhelix/vim-octopress'
+autocmd BufNewFile,BufRead *.markdown setfiletype octopress
+
+" octoeditor.vim
+" http://blog.glidenote.com/blog/2012/04/02/octoeditor.vim/
+NeoBundle 'glidenote/octoeditor.vim'
+let g:octopress_path = '~/scrtree.github.io'
+map <Leader>on  :OctopressNew<CR>
+map <Leader>ol  :OctopressList<CR>
+map <Leader>og  :OctopressGrep<CR>
+nmap ,og  :OctopressGenerate<CR>
+nmap ,od  :OctopressDeploy<CR>'
+
+"" ----Syntax----
 " syntastic
+" シンタックスエラーチェック
 " https://github.com/scrooloose/syntastic
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
@@ -63,9 +73,29 @@ nnoremap ,e :<C-u>Errors<CR>
 " https://github.com/digitaltoad/vim-jade
 NeoBundle 'digitaltoad/vim-jade'
 
+" Markdown
+NeoBundle 'tpope/vim-markdown'
+
+" JSON
+NeoBundle 'elzr/vim-json'
+
+" Haskell
+NeoBundle 'dag/vim2hs'
+"" ----Haskell用----
+" ghcmod-vim
+NeoBundle 'eagletmt/ghcmod-vim'
+" html-template-syntax
+" yesodのテンプレートエンジンをハイライト表示
+NeoBundle 'pbrisbin/html-template-syntax'
+" neco-ghc
+" 補完
+NeoBundle 'eagletmt/neco-ghc'
+
+
 "" ----ファイラ系----
 " ToDo:あとでunite.vimと比較する
-"
+NeoBundle 'Shougo/unite.vim'
+
 " Node-Tree
 " 参考 http://blog.livedoor.jp/kumonopanya/archives/51048805.html
 NeoBundle 'scrooloose/nerdtree'
