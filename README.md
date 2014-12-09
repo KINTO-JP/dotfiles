@@ -2,10 +2,10 @@ Installtion
 ========
 
 前提条件
-gitインストール済
 
-※mac版
-homebrewインストール済
+  gitインストール済
+  ※mac版
+  homebrewインストール済
 
 ```
 $ git clone git@github.com:utiwa/dotfiles.git
