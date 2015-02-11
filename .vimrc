@@ -14,51 +14,24 @@ call neobundle#end()
 
 " fugitive
 " Vimのステータスラインにgitのbranchを表示する際に使用中
-" ToDo:コマンドを知る
 " http://yuku-tech.hatenablog.com/entry/20110427/1303868482
 NeoBundle 'tpope/vim-fugitive'
 
 " Node-Commenter
 " http://nishikawasasaki.hatenablog.com/entry/20101226/1293374432
-" ToDo:使い方を知る
 NeoBundle 'The-NERD-Commenter'
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 
 " Emmet/Zen-Coding
-" ToDo:使い方を覚える
 NeoBundle 'mattn/emmet-vim'
-" NeoBundle 'mattn/zencoding-vim'
-" インデントの設定
-"let g:user_zen_settings = { 'indentation' : '    ', }
 
 " neocomplcache
-" ToDo:プラグインの設定をする
 " (前編)http://vim-users.jp/2010/10/hack177/
 " (中編)http://vim-users.jp/2010/11/hack185/
 " (後編)http://vim-users.jp/2011/01/hack193/
 NeoBundle 'Shougo/neocomplcache'
 let g:NeoComplCache_EnableAtStartup = 1
-" call neobundle#config('neocomplcache', {
-" \ 'lazy' : 1,
-" \ 'autoload' : {
-" \   'insert' : 1,
-" \ }})
-
-"" ----blog octopress----
-" vim-octopress
-NeoBundle 'tangledhelix/vim-octopress'
-autocmd BufNewFile,BufRead *.markdown setfiletype octopress
-
-" octoeditor.vim
-" http://blog.glidenote.com/blog/2012/04/02/octoeditor.vim/
-NeoBundle 'glidenote/octoeditor.vim'
-let g:octopress_path = '~/scrtree.github.io'
-map <Leader>on  :OctopressNew<CR>
-map <Leader>ol  :OctopressList<CR>
-map <Leader>og  :OctopressGrep<CR>
-nmap ,og  :OctopressGenerate<CR>
-nmap ,od  :OctopressDeploy<CR>'
 
 "" ----Syntax----
 " syntastic
@@ -93,7 +66,6 @@ NeoBundle 'pbrisbin/html-template-syntax'
 " 補完
 NeoBundle 'eagletmt/neco-ghc'
 
-
 "" ----ファイラ系----
 " ToDo:あとでunite.vimと比較する
 NeoBundle 'Shougo/unite.vim'
@@ -107,24 +79,10 @@ nnoremap <silent> <C-e>      :NERDTreeToggle<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
 " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる
 autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
-" nerdchristmastree カラー表示の設定 values: 0 or 1.
-" let g:NERDChristmasTree=1
-" ファイルオープン後の動作 Values: 0 or 1.
-" let g:NERDTreeQuitOnOpen=0
 " NERDTreeIgnore 無視するファイルを設定
 let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
 " NERDTreeShowHidden 隠しファイルを表示 Values: 0 or 1.
 let g:NERDTreeShowHidden=1
-" ファイルの表示、非表示
-" let g:NERDTreeShowFiles=1
-" カーソルラインをハイライト表示 Values: 0 or 1.
-" let g:NERDTreeHighlightCursorline=1
-" ブックマークリストの表示 Values: 0 or 1.
-" let g:NERDTreeShowBookmarks=0
-" NERDTreeのツリーを開く場所 Values: "left" or "right"
-" let g:NERDTreeWinPos="left"
-" NERDTreeのツリーの幅
-" let g:NERDTreeWinSize=31
 " ブックマークや、ヘルプのショートカットをメニューに表示 Values: 0 or 1.
 let g:NERDTreeMinimalUI=1
 " NERDTreeを+|`などを使ってツリー表示 Values: 0 or 1.

@@ -52,18 +52,6 @@ echo "TOTAL_MEM: $((4 * 1024)) MB (Theoretical value)"
 chmod u+x used-mem pc-running-time loadaverage
 ```
 
-vimの設定
----
-バックアップとスワップファイルの保存場所を作成
-```
-$ mkdir .vimtmp
-```
-NeoBundleのSetup
-```
-$ mkdir -p ~/.vim/bundle
-$ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-```
-
 ###プラグインの導入方法
 プラグインのインストール
 
