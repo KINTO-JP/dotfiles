@@ -31,7 +31,7 @@ tmuxの設定
 ---
 scriptisディレクトリの中にある
 __loadaverage, pc-running-time, used-mem__を
-__/usr/local/bin__などPATHの遠ている場所に置く
+__/usr/local/bin__などPATHの通っている場所に置く
 
 ###PATHの設定の確認方法
 ```
