@@ -19,7 +19,7 @@ Please supply the message using either -m or -F option.
 ```
 ###使用するエディタをgitに設定
 ```
-$ git config --global core.editor "/usr/bin/vim"
+$ git config --global core.editor "/YOUR_PATH/vim"
 ```
 
 zshの設定
