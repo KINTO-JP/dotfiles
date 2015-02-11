@@ -3,14 +3,11 @@ Installtion
 
 前提条件
 
-gitインストール済
-
-※mac版
-
-homebrewインストール済
+ - git
+ - Vim 7.4以上
 
 ```
-$ git clone git@github.com:utiwa/dotfiles.git
+$ git clone git@github.com:scrtree/dotfiles.git
 $ cd dotfiles
 $ sh setup.sh
 ```

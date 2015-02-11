@@ -1,11 +1,11 @@
-" インデントの設定"-------------------------------------------------
+"-------------------------------------------------
 " NeoBundle設定
 "-------------------------------------------------
 " Be iMproved
 set nocompatible
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -17,21 +17,56 @@ call neobundle#end()
 " http://yuku-tech.hatenablog.com/entry/20110427/1303868482
 NeoBundle 'tpope/vim-fugitive'
 
+" indent-guides
+NeoBundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=82
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=170
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size=1
+
 " Node-Commenter
 " http://nishikawasasaki.hatenablog.com/entry/20101226/1293374432
 NeoBundle 'The-NERD-Commenter'
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
 
-" Emmet/Zen-Coding
+" Emmet
 NeoBundle 'mattn/emmet-vim'
 
-" neocomplcache
-" (前編)http://vim-users.jp/2010/10/hack177/
-" (中編)http://vim-users.jp/2010/11/hack185/
-" (後編)http://vim-users.jp/2011/01/hack193/
-NeoBundle 'Shougo/neocomplcache'
-let g:NeoComplCache_EnableAtStartup = 1
+" neocomplete
+NeoBundle 'Shougo/neocomplete'
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+" return neocomplete#close_popup() . "\<CR>"
+" For no inserting <CR> key.
+return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Close popup by <Space>.
+inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
 "" ----Syntax----
 " syntastic
@@ -67,8 +102,31 @@ NeoBundle 'pbrisbin/html-template-syntax'
 NeoBundle 'eagletmt/neco-ghc'
 
 "" ----ファイラ系----
-" ToDo:あとでunite.vimと比較する
+" unite.vim
 NeoBundle 'Shougo/unite.vim'
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+" neomru.vim
+" Unite.vimで最近使ったファイルを表示する
+NeoBundle 'Shougo/neomru.vim'
 
 " Node-Tree
 " 参考 http://blog.livedoor.jp/kumonopanya/archives/51048805.html
@@ -89,8 +147,6 @@ let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 " マウス操作方法 Values: 1, 2 or 3.
 let g:NERDTreeMouseMode=1
-" NERDTreeShowLineNumbers 行番号を表示 Values: 0 or 1.
-" let NERDTreeShowLineNumbers=0
 
 " FuzzyFinder
 " 参考 http://d.hatena.ne.jp/mickey24/20090310/1236633777
@@ -102,8 +158,6 @@ nnoremap <Space>F F
 nnoremap f <Nop>
 nnoremap <silent> fb :FufBuffer!<CR>
 nnoremap <silent> ff :FufFile!<CR>
-" すごく便利らしいが、使うと固まるのでひとまずコメントアウト
-" nnoremap <silent> fg :FufFile **/<CR>
 nnoremap <silent> fl :FufLine<CR>
 nnoremap <silent> fm :FufMruFile!<CR>
 nnoremap <silent> fc :FufRenewCache<CR>
@@ -125,8 +179,15 @@ let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
 " ファイルを開く際の文字コード設定
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 
-" vimで編集するときの文字コード設定
+" vimで編集するときの文字コードの設定
 set encoding=utf-8
+set termencoding=utf-8
+
+" バックスペースキーで削除できるものを指定
+" indent  : 行頭の空白
+" eol     : 改行
+" start   : 挿入モード開始位置より手前の文字
+set backspace=indent,eol,start
 
 " twigをハイライトする
 au BufRead,BufNewFile *.twig set filetype=htmldjango
@@ -138,7 +199,7 @@ let php_htmlInStrings=1
 let php_sql_query=1
 
 " OSのクリップボードを使用
-set clipboard=unnamedplus
+set clipboard=unnamedplus,unnamed
 
 " 選択した文字をクリップボードに入れる
 set guioptions+=a
@@ -236,7 +297,10 @@ set matchtime=2
 set hlsearch
 
 " pasteモード切り替え
+imap <F11> <nop>
 set pastetoggle=<F11>
+autocmd InsertLeave * set nopaste
+
 
 " コマンド補完を強化
 set wildmenu
@@ -328,8 +392,6 @@ set history=10000
 " この時間の間 (ミリ秒単位) 入力がなければ、スワップファイルがディスクに書き込まれる
 set updatetime=500
 
-" viminfoファイルの設定
-"set viminfo=""
 
 " 変数のスコープ
 let g:svbfre = '.\+'
