@@ -10,7 +10,6 @@ Installtion
 $ git clone git@github.com:scrtree/dotfiles.git
 $ cd dotfiles
 $ sh setup.sh
-$ vim +":NeoBundleInstall" +:q
 ```
 ##git commit した時のコミットのエラー回避方法
 ```

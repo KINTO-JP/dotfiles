@@ -17,4 +17,4 @@ mkdir $HOME/.vimtmp
 
 mkdir -p $HOME/.vim/bundle
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-
+vim +":NeoBundleInstall" +:q
