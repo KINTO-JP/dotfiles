@@ -32,7 +32,7 @@ tmuxの設定
 ---
 scriptisディレクトリの中にある
 __loadaverage, pc-running-time, used-mem__を
-__/usr/local/bin__などPATHの通っている場所に置e
+__/usr/local/bin__などPATHの通っている場所に置く
 ```
 install reattach-to-user-namespace
 ```
