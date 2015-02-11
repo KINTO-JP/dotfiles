@@ -25,14 +25,16 @@ $ git config --global core.editor "/YOUR_PATH/vim"
 
 zshの設定
 ---
-ここ読めばわかる！
-http://news.mynavi.jp/column/zsh/index.html
+preztoと.zlogin .zlogout .zprofile .zshenv .zshrc のシンボリックリンクを貼る
+
+アップデートするときのコマンド
+```
+$ git pull && git submodule update --init --recursive
+```
 
 tmuxの設定
 ---
-scriptisディレクトリの中にある
-__loadaverage, pc-running-time, used-mem__を
-__/usr/local/bin__などPATHの通っている場所に置く
+scriptisディレクトリの中にある__loadaverage, pc-running-time, used-mem__を__/usr/local/bin__などPATHの通っている場所に置く
 ```
 install reattach-to-user-namespace
 ```
