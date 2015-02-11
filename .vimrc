@@ -301,7 +301,6 @@ imap <F11> <nop>
 set pastetoggle=<F11>
 autocmd InsertLeave * set nopaste
 
-
 " コマンド補完を強化
 set wildmenu
 
@@ -430,7 +429,6 @@ highlight specialKey ctermfg=darkgray
 
 " 全角スペースの表示
 highlight ZenkakuSpace cterm=reverse ctermfg=darkgray gui=reverse guifg=darkgray
-" highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
 "-------------------------------------------------
