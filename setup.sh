@@ -12,6 +12,9 @@ ln -s $HOME/dotfiles/.zshenv $HOME/.zshenv
 ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/loadaverage $HOME/usr/local/bin/loadaverage
+ln -s $HOME/dotfiles/pc-running-time $HOME/usr/local/bin/pc-running-time
+ln -s $HOME/dotfiles/used-mem $HOME/usr/local/bin/used-mem
 
 mkdir $HOME/.vimtmp
 

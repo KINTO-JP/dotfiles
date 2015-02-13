@@ -33,9 +33,8 @@ $ git pull && git submodule update --init --recursive
 
 tmuxの設定
 ---
-scriptisディレクトリの中にある__loadaverage, pc-running-time, used-mem__を__/usr/local/bin__などPATHの通っている場所に置く
 ```
-install reattach-to-user-namespace
+brew install reattach-to-user-namespace
 ```
 ###PATHの設定の確認方法
 ```
