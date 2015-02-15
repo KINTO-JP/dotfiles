@@ -137,8 +137,8 @@ alias tree="tree -NC"
 # その他
 # -------------------------------------
 
-# cdしたあとで、自動的に ls する
-function chpwd() { ls -1 }
+# cdしたあとで、自動的に ls -all する
+function chpwd() { ls -all }
 
 
 # iTerm2のタブ名を変更する
