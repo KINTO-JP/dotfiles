@@ -7,7 +7,7 @@ Installtion
  - Vim 7.4以上
 
 ```
-$ git clone git@github.com:scrtree/dotfiles.git
+$ git clone --recursive git@github.com:scrtree/dotfiles.git
 $ cd dotfiles
 $ sh setup.sh
 ```
