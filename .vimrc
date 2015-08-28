@@ -8,9 +8,10 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+" 設定の始まり
 call neobundle#begin(expand('~/.vim/bundle/'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
 
 " fugitive
 " Vimのステータスラインにgitのbranchを表示する際に使用中
@@ -172,6 +173,9 @@ let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
 let g:fuf_mrufile_maxItem = 1000
 let g:fuf_enumeratingLimit = 20
 let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.swp|\.svn'
+
+" 設定の終わり
+call neobundle#end()
 
 "-------------------------------------------------
 " 基本設定
