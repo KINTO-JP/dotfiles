@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git pull && git submodule update --init --recursive
+
 if [ ! -L ~/.zprezto -a -d ~/dotfiles/prezto ]; then
     ln -s ~/dotfiles/prezto ~/.zprezto
 fi
@@ -21,3 +23,4 @@ mkdir $HOME/.vimtmp
 mkdir -p $HOME/.vim/bundle
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 vim +":NeoBundleInstall" +:q
+
