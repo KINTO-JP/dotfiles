@@ -135,6 +135,9 @@ alias tree="tree -NC"
 
 alias vi="vim"
 
+# brew doctorでConfigのWarrnigが表示されるのを回避
+alias brew="env PATH=${PATH/\/Users\/#(whoami)\/\.pyenv\/shims:/} brew"
+
 # -------------------------------------
 # その他
 # -------------------------------------
